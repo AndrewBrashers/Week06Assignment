@@ -1,25 +1,30 @@
 package Week06Assignment;
 
 public class Card {
-	private int value = 0;
-	private String name = "";
-	public int getvalue() {
+	private int suit, value, num;
+	
+	public Card(int card) {
+		this.suit=card/13;
+		this.value=card%13;
+		this.num=card;
+	}
+	
+	public int getSuit() {
+		return suit;
+	}
+	
+	public int getValue() {
 		return value;
 	}
 	
-	public void setvalue(int newvalue) {
-		this.value = newvalue;
+	public int getNum() {
+		return num;
 	}
 	
-	public String getname() {
-		return name;
-	}
-	
-	public void setname(String newname) {
-		this.name = newname;
-	}
-	
-	public void discribe() {
-		System.out.println(value + " of " + name);
+	@Override
+	public String toString() {
+		String[] values = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
+		String[] suites = {"Clubs", "Hearts", "Dimonds", "Spades"};
+		return "Card:  " + values[this.getValue()] + " of " + suites[this.getSuit()];
 	}
 }

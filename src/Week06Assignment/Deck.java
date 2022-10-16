@@ -1,24 +1,26 @@
 package Week06Assignment;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Deck {
-	public static Card[] cards = new Card[52];
-	public void newdeck() {
-		int t = 0;
-		int[] values = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
-		String[] suites = {"Aces", "Hearts", "Dimonds", "Spades"};
-		for(String e: suites) 
-		{
-			for(int i: values) 
-			{
-				cards[t]=new Card();
-				cards[t].setvalue(i);
-				cards[t].setname(e);
-				t++;
-			}
-		}
-		
+	ArrayList<Card> deck;
+	
+	public Deck() {
+		deck = new ArrayList<Card>();
 	}
-	//public Deck() {
-	//	newdeck();
-	//}
+	
+	public void addCard(Card card) {
+		this.deck.add(card);
+	}
+	
+	public Card playCard() {
+		var playedCard=this.deck.get(0);
+		this.deck.remove(0);
+		return playedCard;
+	}
+	
+	public void shuffle() {
+		Collections.shuffle(deck);
+	}
 }
